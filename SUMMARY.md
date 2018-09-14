@@ -15,4 +15,5 @@
   * [strace实现原理](strace/straceshi-xian-yuan-li.md)
   * [strace命令格式](strace/straceming-ling-ge-shi.md)
   * [strace用法](strace/straceyong-fa.md)
+* [strace mac](strace-mac.md)
 
