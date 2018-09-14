@@ -16,7 +16,6 @@ tcp        0      0 0.0.0.0:28017           0.0.0.0:*               LISTEN      
 tcp        0      0 0.0.0.0:6802            0.0.0.0:*               LISTEN      2185/ceph-osd
 tcp        0      0 0.0.0.0:6803            0.0.0.0:*               LISTEN      2185/ceph-osd
 tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      1290/sshd
-
 ```
 
 netstat能够查看所有的网络连接，包括unix socket连接，其功能非常强大。
@@ -24,6 +23,13 @@ netstat能够查看所有的网络连接，包括unix socket连接，其功能�
 另外使用netstat还可以查看本地路由表：
 
 ```
+fgp@controller:~$ sudo netstat -nr
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags   MSS Window  irtt Iface
+0.0.0.0         192.168.1.1     0.0.0.0         UG        0 0          0 brqcb225471-1f
+172.17.0.0      0.0.0.0         255.255.0.0     U         0 0          0 docker0
+192.168.1.0     0.0.0.0         255.255.255.0   U         0 0          0 brqcb225471-1f
+192.168.56.0    0.0.0.0         255.255.255.0   U         0 0          0 eth1
 
 ```
 
