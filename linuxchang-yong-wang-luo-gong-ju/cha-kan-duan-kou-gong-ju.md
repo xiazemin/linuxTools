@@ -53,12 +53,15 @@ sshd    1290 root    4u  IPv6  10302      0t0  TCP *:ssh (LISTEN)
 fgp@controller:~$ sudo lsof -c sshd -i 6 -a -i :22
 COMMAND  PID USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
 sshd    1290 root    4u  IPv6  10302      0t0  TCP *:ssh (LISTEN)
-
 ```
 
 列出所有与`192.168.56.1`（我的宿主机IP地址）的ipv4连接：
 
 ```
+fgp@controller:~$ sudo lsof -i 4@192.168.56.1
+COMMAND  PID USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
+sshd    2299 root    3u  IPv4  14047      0t0  TCP controller:ssh->mac:54558 (ESTABLISHED)
+sshd    2377  fgp    3u  IPv4  14047      0t0  TCP controller:ssh->mac:54558 (ESTABLISHED)
 
 ```
 
