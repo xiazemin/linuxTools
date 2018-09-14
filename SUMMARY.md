@@ -7,6 +7,7 @@
   * [其他](linuxchang-yong-wang-luo-gong-ju/qi-ta.md)
   * [查看端口工具](linuxchang-yong-wang-luo-gong-ju/cha-kan-duan-kou-gong-ju.md)
   * [防火墙](linuxchang-yong-wang-luo-gong-ju/fang-huo-qiang.md)
+  * [系统分析](linuxchang-yong-wang-luo-gong-ju/xi-tong-fen-xi.md)
 * [strace](strace.md)
   * [strace命令详解](strace/straceming-ling-xiang-jie.md)
   * [strace命令用法](strace/straceming-ling-yong-fa.md)
