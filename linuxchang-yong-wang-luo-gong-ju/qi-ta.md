@@ -114,5 +114,5 @@ make -j 4
 
 我们指定了监控的网卡为eth1，结果如图：
 
-![](/assets/importss.png)
+![](/assets/importss.png)由于eth1是私有ip，只有ssh进程，从图中我们可以看到它的进程号为17264，程序为sshd，共发送了1.593MB数据，接收了607.477MB数据（scp了一个镜像文件）。按m键还能切换视角查看当前流量。
 
