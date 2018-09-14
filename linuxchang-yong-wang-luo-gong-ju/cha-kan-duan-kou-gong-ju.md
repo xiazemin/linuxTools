@@ -30,7 +30,6 @@ Destination     Gateway         Genmask         Flags   MSS Window  irtt Iface
 172.17.0.0      0.0.0.0         255.255.0.0     U         0 0          0 docker0
 192.168.1.0     0.0.0.0         255.255.255.0   U         0 0          0 brqcb225471-1f
 192.168.56.0    0.0.0.0         255.255.255.0   U         0 0          0 eth1
-
 ```
 
 以上`Genmask`为`0.0.0.0`的表示**默认路由，即连接外网的路由**。网络中0.0.0.0的IP地址表示整个网络，即网络中的所有主机。它的作用是帮助路由器发送路由表中无法查询的包。如果设置了全零网络的路由，路由表中无法查询的包都将送到全零网络的路由中去。
@@ -40,6 +39,10 @@ Destination     Gateway         Genmask         Flags   MSS Window  irtt Iface
 `lsof`命令用来查看打开的文件\(list open files\)，由于在Linux中一切皆文件，那socket、pipe等也是文件，因此能够查看网络连接以及网络设备，其中和网络最相关的是`-i`选项，它输出符合条件的进程（4、6、协议、:端口、 @ip等），它的格式为`[46][protocol][@hostname|hostaddr][:service|port]`,比如查看22端口有没有打开，哪个进程打开的:
 
 ```
+fgp@controller:~$ sudo lsof -i :22
+COMMAND  PID USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
+sshd    1290 root    3u  IPv4  10300      0t0  TCP *:ssh (LISTEN)
+sshd    1290 root    4u  IPv6  10302      0t0  TCP *:ssh (LISTEN)
 
 ```
 
