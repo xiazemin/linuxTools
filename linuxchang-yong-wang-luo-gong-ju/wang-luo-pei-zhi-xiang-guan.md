@@ -10,3 +10,5 @@ ping google.com
 
 其他比如-b发送广播，另外注意ping只能使用ipv4，如果需要使用ipv6，可以使用ping6命令。
 
+
+
