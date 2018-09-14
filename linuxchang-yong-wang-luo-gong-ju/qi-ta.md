@@ -116,3 +116,13 @@ make -j 4
 
 ![](/assets/importss.png)由于eth1是私有ip，只有ssh进程，从图中我们可以看到它的进程号为17264，程序为sshd，共发送了1.593MB数据，接收了607.477MB数据（scp了一个镜像文件）。按m键还能切换视角查看当前流量。
 
+## scp 跨机远程拷贝
+
+从远处复制文件到本地目录：$scp root@10.6.159.147:/opt/soft/demo.tar /opt/soft/
+
+从远处复制到本地：$scp -r root@10.6.159.147:/opt/soft/test /opt/soft/
+
+上传本地文件到远程机器指定目录：$scp /opt/soft/demo.tar root@10.6.159.147:/opt/soft/scptest
+
+上传本地目录到远程机器指定目录：$scp -r /opt/soft/test root@10.6.159.147:/opt/soft/scptest
+
