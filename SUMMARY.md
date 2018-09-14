@@ -9,6 +9,6 @@
   * [防火墙](linuxchang-yong-wang-luo-gong-ju/fang-huo-qiang.md)
 * [strace](strace.md)
   * [strace命令详解](strace/straceming-ling-xiang-jie.md)
-  * strace命令用法
+  * [strace命令用法](strace/straceming-ling-yong-fa.md)
   * strace命令原理
 
