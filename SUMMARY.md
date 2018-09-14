@@ -13,4 +13,5 @@
   * [strace命令原理](strace/straceming-ling-yuan-li.md)
   * [strace工具的实现原理](strace/stracegong-ju-de-shi-xian-yuan-li.md)
   * [strace实现原理](strace/straceshi-xian-yuan-li.md)
+  * [strace命令格式](strace/straceming-ling-ge-shi.md)
 
