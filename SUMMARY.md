@@ -25,6 +25,7 @@
     * [PF: 规则生成捷径 ](fang-huo-qiang/pf/pf-gui-ze-sheng-cheng-jie-jing.md)
     * [PF: 运行选项 ](fang-huo-qiang/pf/pf-yun-xing-xuan-xiang.md)
     * [PF: 流量整形 \(数据包标准化\) ](fang-huo-qiang/pf/pf-liu-liang-zheng-xing-shu-ju-bao-biao-zhun-531629.md)
+    * [地址池和负载均衡 ](fang-huo-qiang/pf/di-zhi-chi-he-fu-zai-jun-heng.md)
   * pfctl
   * iptables
 
