@@ -43,7 +43,6 @@ fgp@controller:~$ sudo lsof -i :22
 COMMAND  PID USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
 sshd    1290 root    3u  IPv4  10300      0t0  TCP *:ssh (LISTEN)
 sshd    1290 root    4u  IPv6  10302      0t0  TCP *:ssh (LISTEN)
-
 ```
 
 可见22端口是sshd这个命令，其进程号pid为1290打开的。
@@ -51,6 +50,9 @@ sshd    1290 root    4u  IPv6  10302      0t0  TCP *:ssh (LISTEN)
 可以指定多个条件，但默认是OR关系的，如果需要AND关系，必须传入`-a`参数，比如查看22端口并且使用Ipv6连接的进程：
 
 ```
+fgp@controller:~$ sudo lsof -c sshd -i 6 -a -i :22
+COMMAND  PID USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
+sshd    1290 root    4u  IPv6  10302      0t0  TCP *:ssh (LISTEN)
 
 ```
 
