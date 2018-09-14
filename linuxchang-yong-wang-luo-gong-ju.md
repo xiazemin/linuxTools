@@ -1,4 +1,6 @@
-网络配置相关：ifconfig、ip
+
+
+*         网络配置相关：ifconfig、ip
 
 * 路由相关：route、netstat、ip
 * 查看端口工具：netstat、lsof、ss、nc、telnet
