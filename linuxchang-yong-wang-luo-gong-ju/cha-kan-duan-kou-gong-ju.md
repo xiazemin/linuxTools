@@ -1,10 +1,21 @@
-
-
 ## netstat {#netstat}
 
 这个命令用来查看**当前建立的网络连接\(深刻理解netstat每一项代表的含义\)**。最经典的案例就是查看本地系统打开了哪些端口：
 
-```
+```bash
+fgp@controller:~$ sudo netstat -lnpt
+[sudo] password for fgp:
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
+tcp        0      0 0.0.0.0:3306            0.0.0.0:*               LISTEN      2183/mysqld
+tcp        0      0 0.0.0.0:11211           0.0.0.0:*               LISTEN      2506/memcached
+tcp        0      0 0.0.0.0:9292            0.0.0.0:*               LISTEN      1345/python
+tcp        0      0 0.0.0.0:6800            0.0.0.0:*               LISTEN      2185/ceph-osd
+tcp        0      0 0.0.0.0:6801            0.0.0.0:*               LISTEN      2185/ceph-osd
+tcp        0      0 0.0.0.0:28017           0.0.0.0:*               LISTEN      1339/mongod
+tcp        0      0 0.0.0.0:6802            0.0.0.0:*               LISTEN      2185/ceph-osd
+tcp        0      0 0.0.0.0:6803            0.0.0.0:*               LISTEN      2185/ceph-osd
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      1290/sshd
 
 ```
 
@@ -46,11 +57,7 @@ netstat能够查看所有的网络连接，包括unix socket连接，其功能�
 
 ```
 sudo iftop
-
 ```
 
-![](http://int32bit.me/img/posts/Linux%E5%B8%B8%E7%94%A8%E7%BD%91%E7%BB%9C%E5%B7%A5%E5%85%B7%E6%80%BB%E7%BB%93/iftop.png "iftop")
-
-  
-
+![](http://int32bit.me/img/posts/Linux常用网络工具总结/iftop.png "iftop")
 
