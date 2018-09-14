@@ -22,6 +22,7 @@
     * [PF: 包过滤 ](fang-huo-qiang/pf/pf-bao-guo-lv.md)
     * [PF: 网络地址转换\(NAT\) ](fang-huo-qiang/pf/pf-wang-luo-di-zhi-zhuan-636228-nat.md)
     * [PF: 重定向 \(端口转发\) ](fang-huo-qiang/pf/pf-zhong-ding-xiang-duan-kou-zhuan-53d129.md)
+    * [PF: 规则生成捷径 ](fang-huo-qiang/pf/pf-gui-ze-sheng-cheng-jie-jing.md)
   * pfctl
   * iptables
 
