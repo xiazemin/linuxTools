@@ -75,4 +75,5 @@
   * [命令实例](netstat/ming-ling-shi-li.md)
   * [netstat实现原理](netstat/netstatshi-xian-yuan-li.md)
 * [lsof](lsof.md)
+  * [命令详解](lsof/ming-ling-xiang-jie.md)
 
