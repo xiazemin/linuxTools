@@ -67,4 +67,5 @@
   * [linux的桥接实现](wang-qiao/linuxde-qiao-jie-shi-xian.md)
   * [网桥的配置](wang-qiao/wang-qiao-de-pei-zhi.md)
   * [报文处理总结](wang-qiao/bao-wen-chu-li-zong-jie.md)
+  * [Linux下的虚拟Bridge实现](wang-qiao/linuxxia-de-xu-ni-bridge-shi-xian.md)
 
