@@ -38,4 +38,5 @@
 * [tcpdump](tcpdump.md)
   * [tcpdump的底层原理](tcpdump/tcpdumpde-di-ceng-yuan-li.md)
   * [libpcap的使用方式](tcpdump/libpcapde-shi-yong-fang-shi.md)
+  * [tcpdump详解](tcpdump/tcpdumpxiang-jie.md)
 
