@@ -42,4 +42,5 @@
   * [tcpdump 与wireshark](tcpdump/tcpdump-yu-wireshark.md)
   * [TCP 数据包](tcpdump/tcp-shu-ju-bao.md)
   * [UDP 数据包](tcpdump/udp-shu-ju-bao.md)
+  * [SMB/CIFS 解码](tcpdump/smbcifs-jie-ma.md)
 
