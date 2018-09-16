@@ -28,11 +28,16 @@ ifconfig eth1 0.0.0.0 up
 
 ## 2.Bridge设备的创建
 
+```
+和Vlan一样，bridge也被当成一个module加载进内核，它的module\_init\(\)函数和vlan差不多，进行一些namespace的注册，特殊的是它还注册了一个netfilter\_ops，在内核全局的HOOK函数表中增加了7个函数，其中5个的pf=Bridge，另两个的pf分别为INET、INET6，它们主要用于bridge中的netfilter操作（后面会细讲）。
+```
+
+```
+
+最后，也是我们这最关心的是，它注册了一个ioctl函数br\_ioctl\_deviceless\_stub\(\)，该ioctl函数和vlan的一样，都会作为sock\_ioctl\(\)的特殊情况被调用。映射到应用层，它应该是对某个socket插口进行ioctl操作，详见brctl源码。该ioctl函数中最主要的就是br\_add\_bridge\(net,buf\)，用于创建bridge设备，如下图所示：
+```
 
 
-    和Vlan一样，bridge也被当成一个module加载进内核，它的module\_init\(\)函数和vlan差不多，进行一些namespace的注册，特殊的是它还注册了一个netfilter\_ops，在内核全局的HOOK函数表中增加了7个函数，其中5个的pf=Bridge，另两个的pf分别为INET、INET6，它们主要用于bridge中的netfilter操作（后面会细讲）。
-
-    最后，也是我们这最关心的是，它注册了一个ioctl函数br\_ioctl\_deviceless\_stub\(\)，该ioctl函数和vlan的一样，都会作为sock\_ioctl\(\)的特殊情况被调用。映射到应用层，它应该是对某个socket插口进行ioctl操作，详见brctl源码。该ioctl函数中最主要的就是br\_add\_bridge\(net,buf\)，用于创建bridge设备，如下图所示：
 
 
 
