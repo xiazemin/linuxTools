@@ -40,17 +40,13 @@ ifconfig eth1 0.0.0.0 up
 
 这时bridge还不完整，还需添加port从设备，由命令brctl addif brname portdev完成，但要注意，虽然还是brctl命令，但此时的操作对象是已经存在的bridge设备，映射到内核中就是br\\_netdev\\_ops-&gt;ioctl\\(\\)中的br\\_add\\_if\\(\\)（它是br设备的ioctl操作，和之前那个sock\\_ioctl的分支不是一个层次上的）。至于怎么从应用层直接操作底层的net\\_device设备的，可以参见brctl源码，以后再看吧，先看看这里的br\\_add\\_if\\(\\)
 
-首先判断dev从设备必须不是loopback，不是bridge，不是其他bridge的port，且要是ethernet设备，才能继续；然后根据br、dev选择一个index号，并分配一个新的net\_bridge\_port结构，初始化之，并将它加入bridge的port\_list中；最后br的一些物理参数，其MAC地址为所有从设备中MAC最小的（由上一节知，从设备被设置成全接收模式，其IP和MAC都没有了），且其MTU也为所有从设备中最小的。
-
-
-
-    上面设置br的相关参数，下面还要设置从设备，首先使dev-&gt;master=br\_dev（实际上就是构成上一节数据结构中的索引关系）；然后设置dev-&gt;prive\_flags加上IFF\_BRIDGE\_PORT，这样它就不能再作为其他br的从设备了；最后也是最关键的，设置dev-&gt;rx\_handler为br\_handler\_frame\(\)，为数据接收作准备。
+首先判断dev从设备必须不是loopback，不是bridge，不是其他bridge的port，且要是ethernet设备，才能继续；然后根据br、dev选择一个index号，并分配一个新的net\_bridge\_port结构，初始化之，并将它加入bridge的port\_list中；最后br的一些物理参数，其MAC地址为所有从设备中MAC最小的（由上一节知，从设备被设置成全接收模式，其IP和MAC都没有了），且其MTU也为所有从设备中最小的。上面设置br的相关参数，下面还要设置从设备，首先使dev-&gt;master=br\\_dev（实际上就是构成上一节数据结构中的索引关系）；然后设置dev-&gt;prive\\_flags加上IFF\\_BRIDGE\\_PORT，这样它就不能再作为其他br的从设备了；最后也是最关键的，设置dev-&gt;rx\\_handler为br\\_handler\\_frame\\(\\)，为数据接收作准备。
 
 
 
 3.Bridge设备的发送流程
 
-    前面也讲过了，Linux下的bridge设备，对下层而言是一个桥设备，进行数据的转发（实际上对下也有接收能力，下一节讲）。而对上层而言，它就像普通的ethernet设备一样，有自己的IP和MAC地址，那么上层当然可以把它加入路由系统，并利用它发送数据啦，并且很容易想到，它的发射函数最终肯定是利用某个从设备的驱动去完成实际的发送的，这个和VLAN是相通的。
+前面也讲过了，Linux下的bridge设备，对下层而言是一个桥设备，进行数据的转发（实际上对下也有接收能力，下一节讲）。而对上层而言，它就像普通的ethernet设备一样，有自己的IP和MAC地址，那么上层当然可以把它加入路由系统，并利用它发送数据啦，并且很容易想到，它的发射函数最终肯定是利用某个从设备的驱动去完成实际的发送的，这个和VLAN是相通的。
 
 
 
