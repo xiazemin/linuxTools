@@ -1,8 +1,6 @@
 在Linux里面使用网桥非常简单，仅需要做两件事情就可以配置了。其一是在编译内核里把CONFIG\_BRIDGE或CONDIG\_BRIDGE\_MODULE编译选项打开；其二是安装brctl工具。第一步是使内核协议栈支持网桥，第二步是安装用户空间工具，通过一系列的ioctl调用来配置网桥。下面以一个相对简单的实例来贯穿全文，以便分析代码。
 
-```
-    Linux机器有4个网卡，分别是eth0~eth4，其中eth0用于连接外网，而eth1, eth2, eth3都连接到一台PC机，用于配置网桥。只需要用下面的命令就可以完成网桥的配置：
-```
+Linux机器有4个网卡，分别是eth0~eth4，其中eth0用于连接外网，而eth1, eth2, eth3都连接到一台PC机，用于配置网桥。只需要用下面的命令就可以完成网桥的配置：
 
 Brctl addbr br0 \(建立一个网桥br0, 同时在Linux内核里面创建虚拟网卡br0\)
 
@@ -14,37 +12,7 @@ Brctl addif br0 eth3 \(分别为网桥br0添加接口eth1, eth2和eth3\)
 
 其中br0作为一个网桥，同时也是虚拟的网络设备，它即可以用作网桥的管理端口，也可作为网桥所连接局域网的网关，具体情况视你的需求而定。要使用br0接口时，必需为它分配IP地址。为正常工作，PC1, PC2，PC3和br0的IP地址分配在同一个网段。
 
-  
-
-
-  
-
-
-  
-
-
-  
-
-
-  
-
-
-  
-
-
-  
-
-
 在内核，网桥是以模块的方式存在，注册源码路径：\net\brige\br.c：
-
-  
-
-
-  
-
-
-  
-
 
 4.1 初始化
 
@@ -163,7 +131,7 @@ return -EOPNOTSUPP;
 }
 
 ```
-      在这里，我们传入的cmd为SIOCBRADDBR.转入br\_add\_bridge\(buf\)中进行\(./net/bridge/br\_if.c\)： 
+      在这里，我们传入的cmd为SIOCBRADDBR.转入br\_add\_bridge\(buf\)中进行\(./net/bridge/br\_if.c\)：
 ```
 
 int br\_add\_bridge\(const char \*name\)
@@ -263,7 +231,7 @@ goto out;
 }
 
 ```
-      网桥是一个虚拟的设备，它的注册跟实际的物理网络设备注册是一样的。我们关心的是网桥对应的net\_device结构是什么样的，继续跟踪进new\_bridge\_dev\(./net/bridge/br\_if.c\)： 
+      网桥是一个虚拟的设备，它的注册跟实际的物理网络设备注册是一样的。我们关心的是网桥对应的net\_device结构是什么样的，继续跟踪进new\_bridge\_dev\(./net/bridge/br\_if.c\)：
 ```
 
 static struct net\_device \*new\_bridge\_dev\(const char \*name\)
@@ -363,7 +331,7 @@ return dev;
 }
 
 ```
-     在br\_dev\_setup中还做了一些另外在函数指针初始化\(./net/bridge/br\_device.c\)： 
+     在br\_dev\_setup中还做了一些另外在函数指针初始化\(./net/bridge/br\_device.c\)：
 ```
 
 void br\_dev\_setup\(struct net\_device \*dev\)
@@ -433,7 +401,7 @@ dev-&gt;priv\_flags = IFF\_EBRIDGE;
 4.3  添加删除端口
 
 ```
-    仅仅创建网桥，还是不够的。实际应用中的网桥需要添加实际的端口（即物理接口），如例子中的eth1, eth2等。应用程序在使用ioctl来为网桥增加物理接口，对应内核函数br\_dev\_ioctl的代码和分析如下\( /net/bridge/br\_ioctl.c\)： 
+    仅仅创建网桥，还是不够的。实际应用中的网桥需要添加实际的端口（即物理接口），如例子中的eth1, eth2等。应用程序在使用ioctl来为网桥增加物理接口，对应内核函数br\_dev\_ioctl的代码和分析如下\( /net/bridge/br\_ioctl.c\)：
 ```
 
 int br\_dev\_ioctl\(struct net\_device \*dev, struct ifreq \*rq, int cmd\)
