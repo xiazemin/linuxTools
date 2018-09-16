@@ -73,4 +73,5 @@
 * [netstat](netstat.md)
   * [netstat 和 ps 命令原理](netstat/netstat-he-ps-ming-ling-yuan-li.md)
   * [命令实例](netstat/ming-ling-shi-li.md)
+  * [netstat实现原理](netstat/netstatshi-xian-yuan-li.md)
 
