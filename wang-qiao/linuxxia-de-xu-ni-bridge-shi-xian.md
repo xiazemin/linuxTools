@@ -34,9 +34,17 @@ ifconfig eth1 0.0.0.0 up
 
 ![](/assets/importbridge.png)
 
+该函数调用netdev\_alloc\(\)，申请net\_device\(\)，并分配私有空间net\_bridge\(\)结构，指明初始化函数为br\_dev\_setup\(\)，最后register\_netdev\(\)把该设备组册进内核，可见bridge设备和一般的设备差不多。
 
 
 
+主要看其中br\_dev\_setup\(\)，首先初始化设备的type、flags为bridge，然后最关键的是设置其dev-&gt;netdev\_ops = br\_netdev\_ops，即内核为bridge设备准备好了一套通用的驱动函数，这个直接关系到bridge的工作方法，后面再细讲。然后初始化私有空间net\_bridge\(\)结构，设置bridge的本地设备及从设备的list（当然这是还没有从设备加进来），然后设置了桥的group\_address，即上一节所说的特殊的MAC地址，最后还初始化了timer相关的。
 
 
+
+ 
+
+
+
+    这时bridge还不完整，还需添加port从设备，由命令brctl addif brname portdev完成，但要注意，虽然还是brctl命令，但此时的操作对象是已经存在的bridge设备，映射到内核中就是br\_netdev\_ops-&gt;ioctl\(\)中的br\_add\_if\(\)（它是br设备的ioctl操作，和之前那个sock\_ioctl的分支不是一个层次上的）。至于怎么从应用层直接操作底层的net\_device设备的，可以参见brctl源码，以后再看吧，先看看这里的br\_add\_if\(\)
 
