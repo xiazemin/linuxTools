@@ -60,17 +60,29 @@ return 0;
 
 }
 
-```
-      4.2 新建网桥
+4.2 新建网桥
+
+  
 
 
-
-     前面说到通过brctl addbr br0命令建立网桥，此处用户控件调用的brctl命令最终对应到内核中的br\_ioctl\_deviceless\_stub处理函数：
-
+  
 
 
-     /net/bridge/br\_ioctl.c
-```
+  
+
+
+前面说到通过brctl addbr br0命令建立网桥，此处用户控件调用的brctl命令最终对应到内核中的br\\_ioctl\\_deviceless\\_stub处理函数：
+
+  
+
+
+  
+
+
+  
+
+
+/net/bridge/br\\_ioctl.c
 
 int br\_ioctl\_deviceless\_stub\(unsigned int cmd, void \_\_user \*uarg\)
 
