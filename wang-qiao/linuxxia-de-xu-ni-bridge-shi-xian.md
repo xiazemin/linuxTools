@@ -42,13 +42,19 @@ ifconfig eth1 0.0.0.0 up
 
 首先判断dev从设备必须不是loopback，不是bridge，不是其他bridge的port，且要是ethernet设备，才能继续；然后根据br、dev选择一个index号，并分配一个新的net\_bridge\_port结构，初始化之，并将它加入bridge的port\_list中；最后br的一些物理参数，其MAC地址为所有从设备中MAC最小的（由上一节知，从设备被设置成全接收模式，其IP和MAC都没有了），且其MTU也为所有从设备中最小的。上面设置br的相关参数，下面还要设置从设备，首先使dev-&gt;master=br\\_dev（实际上就是构成上一节数据结构中的索引关系）；然后设置dev-&gt;prive\\_flags加上IFF\\_BRIDGE\\_PORT，这样它就不能再作为其他br的从设备了；最后也是最关键的，设置dev-&gt;rx\\_handler为br\\_handler\\_frame\\(\\)，为数据接收作准备。
 
-
-
 3.Bridge设备的发送流程
 
 前面也讲过了，Linux下的bridge设备，对下层而言是一个桥设备，进行数据的转发（实际上对下也有接收能力，下一节讲）。而对上层而言，它就像普通的ethernet设备一样，有自己的IP和MAC地址，那么上层当然可以把它加入路由系统，并利用它发送数据啦，并且很容易想到，它的发射函数最终肯定是利用某个从设备的驱动去完成实际的发送的，这个和VLAN是相通的。
 
+上层根据目的IP地址，路由选择了该br\_dev设备发送，并且由ARP缓存中得到了对应的目的MAC，填写在了skb中，然后启动了发送流程dev\_queue\_xmit\(skb\)。因为此时的skb-&gt;dev为br\_dev，无queue，直接去调用br设备的发送函数，该函数就是br\_netdev\_ops中定义的br\_dev\_xmit\(skb,br\_dev\)。
 
 
 
+    该函数首先根据目的MAC地址，确定是广播还是单播，这里仅讨论单播时，根据DMAC在net\_bridge的fdb\_hash中找到相应的net\_bridge\_fdb\_entry项，并索引到对应的端口net\_bridge\_port。最后利用该端口的从设备来发送数据，注意，这里是直接调用dev-&gt;ops-&gt;ndo\_start\_xmit\(skb,dev\)的，一放面这里的dev已经是从设备了，另一方面，这里没有像VLAN中那样重定位skb-&gt;dev，并重启发送流程dev\_queue\_xmit\(\)，是因为一个从设备只能作为一个bridge的port，没有其它身份，不存在竞争问题。
+
+
+
+4.Bridge设备的接收流程
+
+    和VLAN一样，实际接收由硬件设备完成，最终通过netif\_receive\_skb\(skb\)函数提交给上层，而在该函数中会处理vlan、bridge这类特殊设备。与LVAN的仅是把skb设备重定位以实现对上层透明的要求不同，Bridge接受过程复杂得多，因此专门注册了一个函数来处理，即前面提到的rx\_handler\(\)，它被注册在port设备的net\_device结构中（这算是port设备失去自身IP、MAC的一个补偿吧J），如下图所示。只有作为bridge的从设备才会注册rx\_handler\(\)，并在这里执行，处理桥接，普通的设备不会执行到这里。
 
