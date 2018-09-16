@@ -71,4 +71,5 @@
   * [brctl 使用说明](wang-qiao/brctl-shi-yong-shuo-ming.md)
   * [Docker自定义网桥pipework工作原理](wang-qiao/dockerzi-ding-yi-wang-qiao-pipework-gong-zuo-yuan-li.md)
 * [netstat](netstat.md)
+  * [netstat 和 ps 命令原理](netstat/netstat-he-ps-ming-ling-yuan-li.md)
 
