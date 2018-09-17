@@ -6,13 +6,9 @@ tcpreplay本身包含了几个辅助工具（tcpprep、tcprewrite、tcpreplay和
 
 即区分pcap数据包的流向，即区分出客户端和服务器。　　\\* tcprewrite - 简单的说就是修改2层, 3层, 4层报文头部。
 
+即改写pcap数据包的2-4层的头部信息，即MAC地址、IP地址和PORT等。　　\\* tcpreplay - 真正发包, 可以选择主、从网卡, 发包速度等。
 
 
-即改写pcap数据包的2-4层的头部信息，即MAC地址、IP地址和PORT等。
-
-```
-　　\* tcpreplay - 真正发包, 可以选择主、从网卡, 发包速度等。
-```
 
 即回放pcap文件中的数据包。
 
