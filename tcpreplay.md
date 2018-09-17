@@ -4,11 +4,9 @@ tcpreplay本身包含了几个辅助工具（tcpprep、tcprewrite、tcpreplay和
 
 \* tcpprep - 简单的说就是划分哪些包是client的, 哪些是server的, 一会发包的时候client的包从一个网卡发, server的包可能从另一个网卡发。
 
-即区分pcap数据包的流向，即区分出客户端和服务器。
+即区分pcap数据包的流向，即区分出客户端和服务器。　　\\* tcprewrite - 简单的说就是修改2层, 3层, 4层报文头部。
 
-```
-　　\* tcprewrite - 简单的说就是修改2层, 3层, 4层报文头部。
-```
+
 
 即改写pcap数据包的2-4层的头部信息，即MAC地址、IP地址和PORT等。
 
@@ -20,11 +18,7 @@ tcpreplay本身包含了几个辅助工具（tcpprep、tcprewrite、tcpreplay和
 
 \* tcpreplay-edit-更写pcap数据并回放，将tcprewrite和tcpreplat一条命令实现。
 
-　　\\* tcpbridge - bridge two network segments with the power of tcprewrite。
-
-
-
-
+\\* tcpbridge - bridge two network segments with the power of tcprewrite。
 
 以下是官网的原文。
 
