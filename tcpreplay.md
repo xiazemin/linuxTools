@@ -34,15 +34,15 @@ tcpcapinfo - raw pcap file decoder and debugger
 
 在CentOS里安装tcpreplay，总的来说，有如下两种安装方法。
 
+第一种安装方法：（推荐）
+
+直接yum -y install tcpreplay即可。
+
+ tcpreplay -V
+
+tcpreplay version: 4.2.5 \(build git:v4.2.5\)
+
+第二种源码安装
 
 
- 
-
-
-
-　　第一种安装方法：（推荐）
-
-
-
-　　直接yum -y install tcpreplay即可。
 
