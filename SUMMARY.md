@@ -83,4 +83,5 @@
   * [tcprewrite的帮助文档命令](tcpreplay/tcprewritede-bang-zhu-wen-dang-ming-ling.md)
   * [tcprewrite二层以上](tcpreplay/tcprewriteer-ceng-yi-shang.md)
   * [tcpprep的帮助文档命令](tcpreplay/tcpprepde-bang-zhu-wen-dang-ming-ling.md)
+  * [tcpprep 用法举例 ](tcpreplay/tcpprep-yong-fa-ju-li.md)
 
