@@ -86,4 +86,5 @@
   * [tcpprep 用法举例 ](tcpreplay/tcpprep-yong-fa-ju-li.md)
   * [tcpreplay-edit的帮助文档命令](tcpreplay/tcpreplay-editde-bang-zhu-wen-dang-ming-ling.md)
   * [tcpliveplay的帮助文档命令](tcpreplay/tcpliveplayde-bang-zhu-wen-dang-ming-ling.md)
+  * [tcpbridge的帮助文档命令](tcpreplay/tcpbridgede-bang-zhu-wen-dang-ming-ling.md)
 
