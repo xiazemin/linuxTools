@@ -1,4 +1,6 @@
-1， 首先下载tcpreplay的源码包，下载地址http://tcpreplay.synfin.net/wiki/Download\#Releases。我下载的是tcpreplay-4.1.0.tar.gz。
+1， 首先下载tcpreplay的源码包，下载地址[http://tcpreplay.synfin.net/wiki/Download\#Releases](http://tcpreplay.synfin.net/wiki/Download#Releases。我下载的是tcpreplay-4.1.0.tar.gz。)
+
+[。我下载的是tcpreplay-4.1.0.tar.gz。](http://tcpreplay.synfin.net/wiki/Download#Releases。我下载的是tcpreplay-4.1.0.tar.gz。)
 
 2， 将tcpreplay-4.1.0.tar.gz文件上传到centos里面。然后执行命令
 
