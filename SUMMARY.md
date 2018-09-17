@@ -80,4 +80,5 @@
   * [iftop界面说明](iftop/iftopjie-mian-shuo-ming.md)
 * [tcpreplay](tcpreplay.md)
   * [Tcpreplay使用](tcpreplay/tcpreplayshi-yong.md)
+  * [tcprewrite的帮助文档命令](tcpreplay/tcprewritede-bang-zhu-wen-dang-ming-ling.md)
 
