@@ -8,8 +8,6 @@ tcpreplay本身包含了几个辅助工具（tcpprep、tcprewrite、tcpreplay和
 
 即改写pcap数据包的2-4层的头部信息，即MAC地址、IP地址和PORT等。　　\\* tcpreplay - 真正发包, 可以选择主、从网卡, 发包速度等。
 
-
-
 即回放pcap文件中的数据包。
 
 \* tcpreplay-edit-更写pcap数据并回放，将tcprewrite和tcpreplat一条命令实现。
@@ -33,4 +31,18 @@ tcpreplay-edit - replays & edits pcap files at arbitrary speeds onto the network
 tcpbridge - bridge two network segments with the power of tcprewrite
 
 tcpcapinfo - raw pcap file decoder and debugger
+
+在CentOS里安装tcpreplay，总的来说，有如下两种安装方法。
+
+
+
+ 
+
+
+
+　　第一种安装方法：（推荐）
+
+
+
+　　直接yum -y install tcpreplay即可。
 
