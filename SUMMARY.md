@@ -87,4 +87,6 @@
   * [tcpreplay-edit的帮助文档命令](tcpreplay/tcpreplay-editde-bang-zhu-wen-dang-ming-ling.md)
   * [tcpliveplay的帮助文档命令](tcpreplay/tcpliveplayde-bang-zhu-wen-dang-ming-ling.md)
   * [tcpbridge的帮助文档命令](tcpreplay/tcpbridgede-bang-zhu-wen-dang-ming-ling.md)
+  * [tcppcpinfo的帮助文档命令](tcpreplay/tcppcpinfode-bang-zhu-wen-dang-ming-ling.md)
+  * [Tcpreplay总结](tcpreplay/tcpreplayzong-jie.md)
 
