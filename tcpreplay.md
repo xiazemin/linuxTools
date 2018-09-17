@@ -38,7 +38,7 @@ tcpcapinfo - raw pcap file decoder and debugger
 
 直接yum -y install tcpreplay即可。
 
- tcpreplay -V
+tcpreplay -V
 
 tcpreplay version: 4.2.5 \(build git:v4.2.5\)
 
