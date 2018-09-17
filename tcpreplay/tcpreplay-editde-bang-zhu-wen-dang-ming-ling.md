@@ -4,143 +4,155 @@ tcpreplay \(tcpreplay\) - Replay network traffic stored in pcap files
 
 Usage:  tcpreplay-edit \[ -&lt;flag&gt; \[&lt;val&gt;\] \| --&lt;name&gt;\[{=\| }&lt;val&gt;\] \]... &lt;pcap\_file\(s\)&gt;
 
+-r, --portmap=str          Rewrite TCP/UDP ports
 
+-s, --seed=num             Randomize src/dst IPv4/v6 addresses w/ given seed
 
-   -r, --portmap=str          Rewrite TCP/UDP ports
+-N, --pnat=str             Rewrite IPv4/v6 addresses using pseudo-NAT
 
-   -s, --seed=num             Randomize src/dst IPv4/v6 addresses w/ given seed
+-S, --srcipmap=str         Rewrite source IPv4/v6 addresses using pseudo-NAT
 
-   -N, --pnat=str             Rewrite IPv4/v6 addresses using pseudo-NAT
+-D, --dstipmap=str         Rewrite destination IPv4/v6 addresses using pseudo-NAT
 
-   -S, --srcipmap=str         Rewrite source IPv4/v6 addresses using pseudo-NAT
+-e, --endpoints=str        Rewrite IP addresses to be between two endpoints
 
-   -D, --dstipmap=str         Rewrite destination IPv4/v6 addresses using pseudo-NAT
+-b, --skipbroadcast        Skip rewriting broadcast/multicast IPv4/v6 addresses
 
-   -e, --endpoints=str        Rewrite IP addresses to be between two endpoints
+-C, --fixcsum              Force recalculation of IPv4/TCP/UDP header checksums
 
-   -b, --skipbroadcast        Skip rewriting broadcast/multicast IPv4/v6 addresses
+-m, --mtu=num              Override default MTU length \(1500 bytes\)
 
-   -C, --fixcsum              Force recalculation of IPv4/TCP/UDP header checksums
+```
+   --mtu-trunc            Truncate packets larger then specified MTU
+```
 
-   -m, --mtu=num              Override default MTU length \(1500 bytes\)
+-E, --efcs                 Remove Ethernet checksums \(FCS\) from end of frames
 
-       --mtu-trunc            Truncate packets larger then specified MTU
+```
+   --ttl=str              Modify the IPv4/v6 TTL/Hop Limit
 
-   -E, --efcs                 Remove Ethernet checksums \(FCS\) from end of frames
+   --tos=num              Set the IPv4 TOS/DiffServ/ECN byte
 
-       --ttl=str              Modify the IPv4/v6 TTL/Hop Limit
+   --tclass=num           Set the IPv6 Traffic Class byte
 
-       --tos=num              Set the IPv4 TOS/DiffServ/ECN byte
+   --flowlabel=num        Set the IPv6 Flow Label
+```
 
-       --tclass=num           Set the IPv6 Traffic Class byte
+-F, --fixlen=str           Pad or truncate packet data to match header length
 
-       --flowlabel=num        Set the IPv6 Flow Label
+```
+   --fuzz-seed=num        Fuzz 1 in X packets.  Edit bytes, length, or emulate packet drop
 
-   -F, --fixlen=str           Pad or truncate packet data to match header length
+   --fuzz-factor=num      Set the Fuzz 1 in X packet ratio \(default 1 in 8 packets\)
 
-       --fuzz-seed=num        Fuzz 1 in X packets.  Edit bytes, length, or emulate packet drop
+   --skipl2broadcast      Skip rewriting broadcast/multicast Layer 2 addresses
 
-       --fuzz-factor=num      Set the Fuzz 1 in X packet ratio \(default 1 in 8 packets\)
+   --dlt=str              Override output DLT encapsulation
 
-       --skipl2broadcast      Skip rewriting broadcast/multicast Layer 2 addresses
+   --enet-dmac=str        Override destination ethernet MAC addresses
 
-       --dlt=str              Override output DLT encapsulation
+   --enet-smac=str        Override source ethernet MAC addresses
 
-       --enet-dmac=str        Override destination ethernet MAC addresses
+   --enet-subsmac=str     Substitute MAC addresses
 
-       --enet-smac=str        Override source ethernet MAC addresses
+   --enet-mac-seed=num    Randomize MAC addresses
 
-       --enet-subsmac=str     Substitute MAC addresses
+   --enet-mac-seed-keep-bytes=num Randomize MAC addresses
 
-       --enet-mac-seed=num    Randomize MAC addresses
+   --enet-vlan=str        Specify ethernet 802.1q VLAN tag mode
 
-       --enet-mac-seed-keep-bytes=num Randomize MAC addresses
+   --enet-vlan-tag=num    Specify the new ethernet 802.1q VLAN tag value
 
-       --enet-vlan=str        Specify ethernet 802.1q VLAN tag mode
+   --enet-vlan-cfi=num    Specify the ethernet 802.1q VLAN CFI value
 
-       --enet-vlan-tag=num    Specify the new ethernet 802.1q VLAN tag value
+   --enet-vlan-pri=num    Specify the ethernet 802.1q VLAN priority
 
-       --enet-vlan-cfi=num    Specify the ethernet 802.1q VLAN CFI value
+   --hdlc-control=num     Specify HDLC control value
 
-       --enet-vlan-pri=num    Specify the ethernet 802.1q VLAN priority
+   --hdlc-address=num     Specify HDLC address
 
-       --hdlc-control=num     Specify HDLC control value
+   --user-dlt=num         Set output file DLT type
 
-       --hdlc-address=num     Specify HDLC address
+   --user-dlink=str       Rewrite Data-Link layer with user specified data
+```
 
-       --user-dlt=num         Set output file DLT type
+-q, --quiet                Quiet mode
 
-       --user-dlink=str       Rewrite Data-Link layer with user specified data
+-T, --timer=str            Select packet timing mode: select, ioport, gtod, nano
 
-   -q, --quiet                Quiet mode
+```
+   --maxsleep=num         Sleep for no more then X milliseconds between packets
+```
 
-   -T, --timer=str            Select packet timing mode: select, ioport, gtod, nano
+-v, --verbose              Print decoded packets via tcpdump to STDOUT
 
-       --maxsleep=num         Sleep for no more then X milliseconds between packets
+-A, --decode=str           Arguments passed to tcpdump decoder
 
-   -v, --verbose              Print decoded packets via tcpdump to STDOUT
+-K, --preload-pcap         Preloads packets into RAM before sending
 
-   -A, --decode=str           Arguments passed to tcpdump decoder
+-c, --cachefile=str        Split traffic via a tcpprep cache file
 
-   -K, --preload-pcap         Preloads packets into RAM before sending
+-2, --dualfile             Replay two files at a time from a network tap
 
-   -c, --cachefile=str        Split traffic via a tcpprep cache file
+-i, --intf1=str            Client to server/RX/primary traffic output interface
 
-   -2, --dualfile             Replay two files at a time from a network tap
+-I, --intf2=str            Server to client/TX/secondary traffic output interface
 
-   -i, --intf1=str            Client to server/RX/primary traffic output interface
+```
+   --listnics             List available network interfaces and exit
+```
 
-   -I, --intf2=str            Server to client/TX/secondary traffic output interface
+-l, --loop=num             Loop through the capture file X times
 
-       --listnics             List available network interfaces and exit
+```
+   --loopdelay-ms=num     Delay between loops in milliseconds
 
-   -l, --loop=num             Loop through the capture file X times
+   --pktlen               Override the snaplen and use the actual packet len
+```
 
-       --loopdelay-ms=num     Delay between loops in milliseconds
+-L, --limit=num            Limit the number of packets to send
 
-       --pktlen               Override the snaplen and use the actual packet len
+```
+   --duration=num         Limit the number of seconds to send
+```
 
-   -L, --limit=num            Limit the number of packets to send
+-x, --multiplier=str       Modify replay speed to a given multiple
 
-       --duration=num         Limit the number of seconds to send
+-p, --pps=str              Replay packets at a given packets/sec
 
-   -x, --multiplier=str       Modify replay speed to a given multiple
+-M, --mbps=str             Replay packets at a given Mbps
 
-   -p, --pps=str              Replay packets at a given packets/sec
+-t, --topspeed             Replay packets as fast as possible
 
-   -M, --mbps=str             Replay packets at a given Mbps
+-o, --oneatatime           Replay one packet at a time for each user input
 
-   -t, --topspeed             Replay packets as fast as possible
+```
+   --pps-multi=num        Number of packets to send for each time interval
 
-   -o, --oneatatime           Replay one packet at a time for each user input
+   --unique-ip            Modify IP addresses each loop iteration to generate unique flows
 
-       --pps-multi=num        Number of packets to send for each time interval
+   --unique-ip-loops=str  Number of times to loop before assigning new unique ip
+```
 
-       --unique-ip            Modify IP addresses each loop iteration to generate unique flows
+-!, --no-flow-stats        Suppress printing and tracking flow count, rates and expirations
 
-       --unique-ip-loops=str  Number of times to loop before assigning new unique ip
+-", --flow-expiry=num      Number of inactive seconds before a flow is considered expired
 
-   -!, --no-flow-stats        Suppress printing and tracking flow count, rates and expirations
+-P, --pid                  Print the PID of tcpreplay at startup
 
-   -", --flow-expiry=num      Number of inactive seconds before a flow is considered expired
+-\#, --stats=num            Print statistics every X seconds, or every loop if '0'
 
-   -P, --pid                  Print the PID of tcpreplay at startup
+-V, --version              Print version information
 
-   -\#, --stats=num            Print statistics every X seconds, or every loop if '0'
+-h, --less-help            Display less usage information and exit
 
-   -V, --version              Print version information
+-H, --help                 display extended usage information and exit
 
-   -h, --less-help            Display less usage information and exit
+-!, --more-help            extended usage information passed thru pager
 
-   -H, --help                 display extended usage information and exit
+-$, --save-opts\[=arg\]      save the option state to a config file
 
-   -!, --more-help            extended usage information passed thru pager
-
-   -$, --save-opts\[=arg\]      save the option state to a config file
-
-   -%, --load-opts=str        load options from a config file
-
-
+-%, --load-opts=str        load options from a config file
 
 Options are specified by doubled hyphens and their name or by a single
 
@@ -150,9 +162,33 @@ tcpreplay is a tool for replaying network traffic from files saved with
 
 tcpdump or other tools which write pcap\(3\) files.
 
-
-
 Please send bug reports to:  &lt;tcpreplay-users@lists.sourceforge.net&gt;
 
 \[root@datatest ~\]\#
+
+　tcpreplay-edit 实时修改包数据并回放，它是将 tcprewrite 和 tcpreplay 用一条命令实现。其好处是修改包数据不会新生成 pcap 文件。如果是需要不断的改写一个包文件并回放建议使用 tcpreplay-edit，如果是需要一次改写一个包文件并多次回放建议使用 tcprewrite 和 tcpreplay 的结合，这样具有更好的回放速率。 
+
+
+
+
+
+　　tcpreplay-edit小例子
+
+
+
+　　编写脚本，不断改写包文件的 IP 地址并回放： 
+
+
+
+　　比如，你自己写个test.sh脚本，然后赋予chmod 777 test.sh。执行就是
+
+
+
+for i in {1..255}
+
+do
+
+tcpreplay-edit --endpoints=1.1.2.$i:1.1.1.2 -t -i eth2 -I eth1 -c edit.cach edit.pcap
+
+done
 
