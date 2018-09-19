@@ -46,5 +46,11 @@ yum -y install bison
 
 tcpdump -XvvennSs 0 -i eth0 tcp\[20:2\]=0x4745 or tcp\[20:2\]=0x4854 -w /tmp/capture.pcap
 
+下载Wireshark\_2.2.6\_Intel\_64.dmg
+
+打开：
+
+![](/assets/wireshark.png)
+
 
 
