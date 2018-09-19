@@ -98,4 +98,5 @@
   * [PCAP文件解析](pcapwen-jian/pcapwen-jian-jie-xi.md)
 * [Wireshark\(Ethereal）](wiresharkethereal.md)
   * [Ethereal的使用](wiresharkethereal/etherealde-shi-yong.md)
+  * [tcpdump和ethereal](wiresharkethereal/tcpdumpheethereal.md)
 
