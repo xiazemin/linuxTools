@@ -97,4 +97,5 @@
   * [pcap文件格式](pcapwen-jian/pcapwen-jian-ge-shi.md)
   * [PCAP文件解析](pcapwen-jian/pcapwen-jian-jie-xi.md)
 * [Wireshark\(Ethereal）](wiresharkethereal.md)
+  * [Ethereal的使用](wiresharkethereal/etherealde-shi-yong.md)
 
