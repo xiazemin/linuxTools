@@ -8,57 +8,43 @@ yum install tcpdump
 
 源码安装
 
-\# flex   
+\# flex
 
-yum -y install flex  
+yum -y install flex
 
-
-
-\# bison  
+\# bison
 
 yum -y install bison
 
+wget [http://www.tcpdump.org/release/libpcap-1.5.3.tar.gz](http://www.tcpdump.org/release/libpcap-1.5.3.tar.gz)
 
+wget [http://www.tcpdump.org/release/tcpdump-4.5.1.tar.gz](http://www.tcpdump.org/release/tcpdump-4.5.1.tar.gz)
 
-wget http://www.tcpdump.org/release/libpcap-1.5.3.tar.gz    
+tar -zxvf libpcap-1.5.3.tar.gz
 
-wget http://www.tcpdump.org/release/tcpdump-4.5.1.tar.gz    
+cd libpcap-1.5.3
 
-tar -zxvf libpcap-1.5.3.tar.gz    
+./configure
 
-cd libpcap-1.5.3    
+sudo make install
 
-./configure    
+cd ..
 
-sudo make install    
+tar -zxvf tcpdump-4.5.1.tar.gz
 
+cd tcpdump-4.5.1
 
+./configure
 
-cd ..    
-
-tar -zxvf tcpdump-4.5.1.tar.gz    
-
-cd tcpdump-4.5.1    
-
-./configure    
-
-sudo make install   
-
-
+sudo make install
 
 yum -y install bison
-
-
 
 使用
 
 抓http包
 
-
-
 tcpdump -XvvennSs 0 -i eth0 tcp\[20:2\]=0x4745 or tcp\[20:2\]=0x4854 -w /tmp/capture.pcap
-
-1
 
 
 
